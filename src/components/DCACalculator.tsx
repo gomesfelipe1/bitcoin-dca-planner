@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -48,6 +47,7 @@ export const DCACalculator = () => {
       let totalInvested = 0;
       let currentDate = new Date(startDateTime);
       let investmentCount = 0;
+      let totalWeightedPrice = 0;
 
       while (currentDate <= today) {
         const formattedDate = `${(currentDate.getDate()).toString().padStart(2, '0')}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getFullYear()}`;
@@ -59,6 +59,7 @@ export const DCACalculator = () => {
           const btcBought = investmentAmount / price;
           btcAccumulated += btcBought;
           totalInvested += investmentAmount;
+          totalWeightedPrice += price * investmentAmount;
           investmentCount++;
           console.log(`Investment ${investmentCount}: $${investmentAmount} bought ${btcBought.toFixed(6)} BTC at $${price}`);
         }
@@ -74,6 +75,7 @@ export const DCACalculator = () => {
       const currentPrice = await fetchCurrentBTCPrice();
       const currentValue = btcAccumulated * currentPrice;
       const roi = totalInvested > 0 ? ((currentValue - totalInvested) / totalInvested) * 100 : 0;
+      const averagePrice = totalInvested > 0 ? totalWeightedPrice / totalInvested : 0;
 
       let goalInfo = null;
       if (goal && goal > 0) {
@@ -91,6 +93,7 @@ export const DCACalculator = () => {
         btcAccumulated,
         currentValue,
         currentPrice,
+        averagePrice,
         roi,
         investmentCount,
         frequency,

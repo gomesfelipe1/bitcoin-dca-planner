@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TrendingUp, Target, DollarSign, Bitcoin } from "lucide-react";
+import { TrendingUp, Target, DollarSign, Bitcoin, Calculator } from "lucide-react";
 
 interface ResultsProps {
   results: {
@@ -8,6 +8,7 @@ interface ResultsProps {
     btcAccumulated: number;
     currentValue: number;
     currentPrice: number;
+    averagePrice: number;
     roi: number;
     investmentCount: number;
     frequency: string;
@@ -25,6 +26,7 @@ export const ResultsDisplay = ({ results }: ResultsProps) => {
     btcAccumulated,
     currentValue,
     currentPrice,
+    averagePrice,
     roi,
     investmentCount,
     frequency,
@@ -72,6 +74,16 @@ export const ResultsDisplay = ({ results }: ResultsProps) => {
                 {formatBTC(btcAccumulated)} BTC
               </span>
             </div>
+
+            <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg">
+              <div className="flex items-center gap-2">
+                <Calculator className="h-5 w-5 text-yellow-600" />
+                <span className="font-medium text-gray-700">Average Price</span>
+              </div>
+              <span className="text-lg font-bold text-yellow-600">
+                {formatCurrency(averagePrice)}
+              </span>
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -93,6 +105,15 @@ export const ResultsDisplay = ({ results }: ResultsProps) => {
                 {roi >= 0 ? '+' : ''}{roi.toFixed(2)}%
               </span>
             </div>
+
+            <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg">
+              <div className="flex items-center gap-2">
+                <span className="font-medium text-gray-700">Current BTC Price</span>
+              </div>
+              <span className="text-lg font-bold text-purple-600">
+                {formatCurrency(currentPrice)}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -101,7 +122,12 @@ export const ResultsDisplay = ({ results }: ResultsProps) => {
             <strong>Investment Summary:</strong> You made {investmentCount} {frequency} investments
           </p>
           <p className="text-sm text-gray-600">
-            <strong>Current BTC Price:</strong> {formatCurrency(currentPrice)}
+            <strong>Price Comparison:</strong> Your average price was {formatCurrency(averagePrice)} vs current price of {formatCurrency(currentPrice)}
+            {averagePrice < currentPrice ? (
+              <span className="text-green-600 font-medium"> (You bought at a discount! 📈)</span>
+            ) : (
+              <span className="text-orange-600 font-medium"> (Current price is lower 📉)</span>
+            )}
           </p>
         </div>
 
