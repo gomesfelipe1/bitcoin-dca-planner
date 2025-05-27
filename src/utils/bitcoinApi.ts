@@ -17,7 +17,7 @@ const mockPriceData: { [key: string]: number } = {
   '2025-02-01': 95000,
   '2025-03-01': 98000,
   '2025-04-01': 101000,
-  '2025-05-01': 103000,
+  '2025-05-01': 108000, // Updated to current realistic price
 };
 
 const getMockPrice = (date: string): number | null => {
@@ -79,7 +79,7 @@ export const fetchCurrentBTCPrice = async (): Promise<number> => {
     
     if (!response.ok) {
       console.warn("Current price API failed, using mock data");
-      return 103000; // Current mock price
+      return 108000; // Updated current mock price
     }
     
     const data = await response.json();
@@ -87,13 +87,13 @@ export const fetchCurrentBTCPrice = async (): Promise<number> => {
     
     if (!price) {
       console.warn("No current price data, using mock data");
-      return 103000;
+      return 108000;
     }
     
     console.log(`Current Bitcoin price: $${price}`);
     return price;
   } catch (error) {
     console.warn("Current price API error, using mock data:", error);
-    return 103000; // Fallback to mock current price
+    return 108000; // Updated fallback to current realistic price
   }
 };
