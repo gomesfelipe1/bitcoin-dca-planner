@@ -45,8 +45,8 @@ export const ResultsDisplay = ({ results }: ResultsProps) => {
   };
 
   return (
-    <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-      <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-t-lg">
+    <Card className="shadow-lg border-0 bg-white/95 backdrop-blur-sm">
+      <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-t-lg">
         <CardTitle className="flex items-center gap-2 text-xl">
           <TrendingUp className="h-6 w-6" />
           📊 Results
@@ -106,11 +106,11 @@ export const ResultsDisplay = ({ results }: ResultsProps) => {
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg">
+            <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
               <div className="flex items-center gap-2">
                 <span className="font-medium text-gray-700">Current BTC Price</span>
               </div>
-              <span className="text-lg font-bold text-purple-600">
+              <span className="text-lg font-bold text-blue-600">
                 {formatCurrency(currentPrice)}
               </span>
             </div>
@@ -132,17 +132,17 @@ export const ResultsDisplay = ({ results }: ResultsProps) => {
         </div>
 
         {goalInfo && (
-          <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg border border-purple-200">
+          <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
             <div className="flex items-center gap-2 mb-2">
-              <Target className="h-5 w-5 text-purple-600" />
-              <span className="font-medium text-purple-800">🎯 Goal Progress</span>
+              <Target className="h-5 w-5 text-blue-600" />
+              <span className="font-medium text-blue-800">🎯 Goal Progress</span>
             </div>
             {goalInfo.achieved ? (
               <p className="text-green-700 font-medium">
                 🎉 Congratulations! You've reached your Bitcoin goal!
               </p>
             ) : (
-              <div className="space-y-1 text-purple-700">
+              <div className="space-y-1 text-blue-700">
                 <p>
                   You need <strong>{formatBTC(goalInfo.remaining)} BTC</strong> more to hit your goal.
                 </p>

@@ -79,7 +79,7 @@ export const fetchCurrentBTCPrice = async (): Promise<number> => {
     
     if (!response.ok) {
       console.warn("Current price API failed, using mock data");
-      return 108000; // Updated current mock price
+      return 103000; // Original mock price
     }
     
     const data = await response.json();
@@ -87,13 +87,13 @@ export const fetchCurrentBTCPrice = async (): Promise<number> => {
     
     if (!price) {
       console.warn("No current price data, using mock data");
-      return 108000;
+      return 103000;
     }
     
     console.log(`Current Bitcoin price: $${price}`);
     return price;
   } catch (error) {
     console.warn("Current price API error, using mock data:", error);
-    return 108000; // Updated fallback to current realistic price
+    return 103000; // Original fallback price
   }
 };

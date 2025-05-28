@@ -114,8 +114,8 @@ export const DCACalculator = () => {
 
   return (
     <div className="space-y-6">
-      <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-        <CardHeader className="bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-t-lg">
+      <Card className="shadow-lg border-0 bg-white/95 backdrop-blur-sm">
+        <CardHeader className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-t-lg">
           <CardTitle className="flex items-center gap-2 text-xl">
             <Calculator className="h-6 w-6" />
             DCA Calculator
@@ -133,7 +133,7 @@ export const DCACalculator = () => {
                 placeholder="e.g. 100"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                className="border-gray-300 focus:border-yellow-500 focus:ring-yellow-500"
               />
             </div>
 
@@ -142,7 +142,7 @@ export const DCACalculator = () => {
                 Frequency
               </Label>
               <Select value={frequency} onValueChange={setFrequency}>
-                <SelectTrigger className="border-gray-300 focus:border-orange-500 focus:ring-orange-500">
+                <SelectTrigger className="border-gray-300 focus:border-yellow-500 focus:ring-yellow-500">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-white border border-gray-200 shadow-lg">
@@ -161,7 +161,7 @@ export const DCACalculator = () => {
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                className="border-gray-300 focus:border-yellow-500 focus:ring-yellow-500"
               />
             </div>
 
@@ -176,7 +176,7 @@ export const DCACalculator = () => {
                 placeholder="e.g. 0.1"
                 value={btcGoal}
                 onChange={(e) => setBtcGoal(e.target.value)}
-                className="border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                className="border-gray-300 focus:border-yellow-500 focus:ring-yellow-500"
               />
             </div>
           </div>
@@ -184,7 +184,7 @@ export const DCACalculator = () => {
           <Button
             onClick={calculateDCA}
             disabled={loading}
-            className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium py-3 transition-all duration-200 transform hover:scale-[1.02]"
+            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-medium py-3 transition-all duration-200 transform hover:scale-[1.02]"
           >
             {loading ? (
               <LoadingSpinner />
